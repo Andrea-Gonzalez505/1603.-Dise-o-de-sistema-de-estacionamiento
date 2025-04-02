@@ -1,0 +1,44 @@
+class ParkingSystem {
+public:
+    // Variables que almacenan la cantidad de espacios disponibles para cada tipo de carro
+    int _big = 0;
+    int _medium = 0;
+    int _small = 0;
+    
+    // Constructor que inicializa el objeto con la cantidad de espacios disponibles
+    ParkingSystem(int big, int medium, int small)  {
+        _big = big;       // Asigna la cantidad de espacios grandes
+        _medium = medium; // Asigna la cantidad de espacios medianos
+        _small = small;   // Asigna la cantidad de espacios pequeños
+    }
+    
+    // Método para agregar un carro al estacionamiento
+    // Retorna 'true' si se pudo estacionar, 'false' si no hay espacio disponible
+    bool addCar(int carType) {
+        switch(carType) {
+        case 1: // Caso para carros grandes
+            if (_big == 0) {
+                return false; // No hay espacio disponible
+            } else {
+                _big--; // Reduce el número de espacios disponibles
+                return true; // Se pudo estacionar
+            }
+        case 2: // Caso para carros medianos
+            if (_medium == 0) {
+                return false; // No hay espacio disponible
+            } else {
+                _medium--;
+                return true;
+            }
+        case 3: // Caso para carros pequeños
+            if (_small == 0) {
+                return false; // No hay espacio disponible
+            } else {
+                _small--;
+                return true;
+            }
+        default: // Caso inválido
+            return false;
+        }
+    }
+};
